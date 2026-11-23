@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Secret World</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:linear-gradient(135deg,#170d35,#49246d,#172b58);color:white}
+header{text-align:center;padding:45px 15px}
+header h1{font-size:42px;color:#f6c9ff;letter-spacing:4px}
+header p{color:#e6d9ff}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:15px}
+button{background:#a56be0;color:white;border:1px solid #eacaff;border-radius:25px;padding:12px 17px;cursor:pointer;margin:4px}
+button:hover{background:#d17bdc}
+main{max-width:850px;margin:25px auto;padding:15px}
+section{display:none;text-align:center;background:#ffffff16;border:1px solid #ffffff40;border-radius:22px;padding:30px;margin-bottom:20px}
+section.active{display:block}
+h2{color:#f6c9ff}
+.card{background:#ffffff15;padding:18px;border-radius:15px;margin:15px 0}
+input,textarea{padding:12px;border-radius:10px;border:0;width:90%;margin:10px}
+footer{text-align:center;padding:25px;color:#e4d4ff}
+</style>
+</head>
+<body>
+<header>
+<h1>🌌 SECRET WORLD</h1>
+<p>A world of imagination, discovery and surprises.</p>
+</header>
+
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('kids')">Kids World</button>
+<button onclick="show('mystery')">Mystery</button>
+<button onclick="show('creative')">Creativity</button>
+<button onclick="show('explore')">Explore</button>
+<button onclick="show('games')">Fun Zone</button>
+<button onclick="show('brain')">Brain Corner</button>
+<button onclick="show('secret')">Secret Box</button>
+<button onclick="show('relax')">Relax</button>
+</nav>
+
+<main>
+<section id="home" class="active">
+<h2>Welcome to Secret World ✨</h2>
+<p>A special place for everyone, from kids to adults.</p>
+<button onclick="show('explore')">ENTER SECRET WORLD 🚀</button>
+</section>
+
+<section id="kids">
+<h2>🧸 Kids World</h2>
+<div class="card">Once upon a time, a little star wanted to explore the universe. ⭐</div>
+<div class="card">Drawing challenge: Imagine your own magical animal!</div>
+</section>
+
+<section id="mystery">
+<h2>🔍 Mystery Zone</h2>
+<p>I have keys but no locks. I have space but no room. What am I?</p>
+<input id="answer" placeholder="Your answer">
+<button onclick="check()">Check Answer</button>
+<p id="result"></p>
+</section>
+
+<section id="creative">
+<h2>🎨 Creativity Corner</h2>
+<p>Create your own little story or idea.</p>
+<textarea id="idea" rows="5" placeholder="Write your imagination..."></textarea>
+<button onclick="saveIdea()">Save Idea</button>
+<p id="saved"></p>
+</section>
+
+<section id="explore">
+<h2>🌍 Explore World</h2>
+<div class="card">🐙 Octopuses have three hearts!</div>
+<div class="card">☀️ Sunlight takes about 8 minutes to reach Earth.</div>
+<div class="card">🌊 The ocean is home to millions of living things.</div>
+</section>
+
+<section id="games">
+<h2>🎮 Fun Zone</h2>
+<p>Guess a number between 1 and 5!</p>
+<input id="guess" type="number" min="1" max="5">
+<button onclick="game()">Play</button>
+<p id="gameResult"></p>
+</section>
+
+<section id="brain">
+<h2>🧠 Brain Corner</h2>
+<p>What has a face and two hands but no arms or legs?</p>
+<button onclick="document.getElementById('brainAnswer').innerText='A clock! ⏰'">Reveal Answer</button>
+<p id="brainAnswer"></p>
+</section>
+
+<section id="secret">
+<h2>🎁 Secret Box</h2>
+<p>Ready for a surprise?</p>
+<div style="font-size:70px">🎁</div>
+<button onclick="secret()">OPEN MY BOX</button>
+<h3 id="message"></h3>
+</section>
+
+<section id="relax">
+<h2>🌙 Relax Zone</h2>
+<div class="card">
+<h3>Take your time. 💜</h3>
+<p>You can learn something new every day. Be curious, be creative and enjoy the little things.</p>
+</div>
+</section>
+</main>
+
+<footer>✨ SECRET WORLD · Explore · Discover · Create ✨</footer>
+
+<script>
+function show(id){
+document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+window.scrollTo(0,0);
+}
+function check(){
+document.getElementById('result').innerText=
+document.getElementById('answer').value.trim().toLowerCase()==='keyboard'?'Correct! 🎉':'Try again!';
+}
+function saveIdea(){
+document.getElementById('saved').innerText=
+document.getElementById('idea').value.trim()?'Your idea is ready! 💜':'Write something first!';
+}
+function game(){
+let n=Math.floor(Math.random()*5)+1;
+document.getElementById('gameResult').innerText=
+Number(document.getElementById('guess').value)===n?'You won! 🎉':'Try again! The number was '+n;
+}
+function secret(){
+let m=['You are amazing! ✨','Keep exploring! 🌍','Your ideas matter! 💜','Never stop learning! 🌟'];
+document.getElementById('message').innerText=m[Math.floor(Math.random()*m.length)];
+}
+</script>
+</body>
+</html>
